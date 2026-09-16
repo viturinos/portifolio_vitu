@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plano de Estudo | Victor Emanuel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animacoes.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="projetos.html">Projetos</a>
+            </li>
+            <li>
+                <a href="curso.html">Cursos</a>
+            </li>
+            <li>
+                <a href="sobre.html">Contato</a>
+            </li>
+            <li>
+                <a href="planoestudo.html" class="atual" aria-current="page">Plano de Estudo</a>
+            </li>
+        </ul>
+    </nav>
+
+    <header class="header-title">
+        <h1>Plano de Estudo</h1>
+        <p>
+            Minha semana equilibra estudos do ensino médio, formação técnica e
+            atividades complementares em cada período do dia.
+        </p>
+    </header>
+
+    <section class="tabela-container">
+        <div class="tabela">
+
+            <div class="turno">TURNO</div>
+            <div class="dia">SEG</div>
+            <div class="dia">TER</div>
+            <div class="dia">QUA</div>
+            <div class="dia">QUI</div>
+            <div class="dia">SEX</div>
+            <div class="dia">SÁB</div>
+            <div class="dia">DOM</div>
+
+            <div class="horario">MANHÃ<span>6:30 às 7:40</span></div>
+            <div class="box academia">Academia</div>
+            <div class="box academia">Academia</div>
+            <div class="box academia">Academia</div>
+            <div class="box academia">Academia</div>
+            <div class="box academia">Academia</div>
+            <div class="box vazio">·</div>
+            <div class="box vazio">·</div>
+
+            <div class="horario">MANHÃ<span>8:00 às 10:30</span></div>
+            <div class="box materia">Linguagens</div>
+            <div class="box materia">Humanas</div>
+            <div class="box materia">Natureza</div>
+            <div class="box materia">Matemática</div>
+            <div class="box materia">Senai</div>
+            <div class="box vazio">·</div>
+            <div class="box vazio">·</div>
+
+            <div class="horario">TARDE<span>13:00 às 18:20</span></div>
+            <div class="box senai">SENAI</div>
+            <div class="box senai">SENAI</div>
+            <div class="box sesi">SESI</div> 
+            <div class="box sesi">SESI</div>
+            <div class="box sesi">SESI</div>
+            <div class="box vazio">·</div>
+            <div class="box vazio">·</div>
+
+            <div class="horario">NOITE<span>18:00 às 21:20</span></div>
+            <div class="box contraturno">Célula</div>
+            <div class="box contraturno">Contra-turno</div>
+            <div class="box contraturno">Contra-turno</div>
+            <div class="box contraturno">Contra-turno</div>
+            <div class="box contraturno">Atividades</div>
+            <div class="box contraturno">Atividade</div>
+            <div class="box contraturno">Atividade</div>
+        </div>
+
+        <div class="legenda">
+            <span class="legenda-chip"><span class="dot dot-academia"></span>Academia</span>
+            <span class="legenda-chip"><span class="dot dot-materia"></span>Matérias</span>
+            <span class="legenda-chip"><span class="dot dot-senai"></span>SENAI</span>
+            <span class="legenda-chip"><span class="dot dot-sesi"></span>SESI</span>
+            <span class="legenda-chip"><span class="dot dot-contraturno"></span>Contra-turno / Atividades</span>
+            <span class="legenda-chip"><span class="dot dot-vazio"></span>Vaga livre</span>
+        </div>
+    </section>
+
+    <footer class="direitos">
+        <p>&copy; <span id="ano"></span> Victor Emanuel. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>document.getElementById("ano").textContent = new Date().getFullYear();</script>
+    <script src="animacoes.js"></script>
+</body>
+
+</html>

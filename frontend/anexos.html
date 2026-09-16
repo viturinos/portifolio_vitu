@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melhores Momentos</title>
+    <link rel="stylesheet" href="momentos.css">
+    <link rel="stylesheet" href="animacoes.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home1.html">Início</a></li>
+            <li><a href="linguagens.html">Linguagens</a></li>
+            <li><a href="humanas.html">Humanas</a></li>
+            <li><a href="natureza.html">Natureza</a></li>
+            <li><a href="matematica.html">Matemática</a></li>
+            <li><a href="senai.html">SENAI</a></li>
+            <li><a href="anexos.html">Anexos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="momentos-header">
+            <h1>MELHORES MOMENTOS</h1>
+            <div class="descricao">
+                Guarde aqui os registros dos momentos que marcaram o seu ano. Cada imagem
+                enviada entra automaticamente no carrossel de recordações.
+            </div>
+        </div>
+
+        <form id="form-momento" class="momento-form">
+            <h2>Adicionar Novo Momento</h2>
+            <div class="momento-grupo">
+                <div class="campo">
+                    <label for="momento-titulo">Título / Legenda</label>
+                    <input type="text" id="momento-titulo" placeholder="Ex: Formatura, viagem da escola..." required>
+                </div>
+                <div class="campo campo-arquivo">
+                    <label for="momento-arquivo">Imagem do Momento</label>
+                    <input type="file" id="momento-arquivo" accept="image/*" required>
+                </div>
+            </div>
+            <div class="momento-acoes">
+                <button type="submit" class="btn-momento">Salvar Momento</button>
+                <button type="button" id="momento-limpar" class="btn-limpar">Limpar</button>
+            </div>
+            <div id="momento-msg" class="momento-msg"></div>
+        </form>
+
+        <section class="carrossel-section">
+            <h2 class="carrossel-titulo">Recordações</h2>
+            <div class="carrossel-container">
+                <button id="carrossel-anterior" class="carrossel-setas seta-anterior">&#10094;</button>
+
+                <div class="carrossel-viewport">
+                    <div id="carrossel-pista" class="carrossel-pista"></div>
+                </div>
+
+                <button id="carrossel-proximo" class="carrossel-setas seta-proximo">&#10095;</button>
+            </div>
+            <p id="carrossel-vazio" class="carrossel-vazio">Nenhum momento salvo ainda. Envie a primeira imagem acima!</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="insta">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/free-logotipo-do-instagram-icon-svg-download-png-7574396.webp" alt="Instagram">
+            </a>
+            <p>INSTAGRAM</p>
+        </div>
+    </footer>
+    <footer class="direitos">
+        <p>© <span id="ano"></span> Victor Emanuel. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>document.getElementById("ano").textContent = new Date().getFullYear();</script>
+    <script src="storage.js"></script>
+    <script src="momentos.js"></script>
+<script src="animacoes.js"></script>\r\n</body>
+</html>

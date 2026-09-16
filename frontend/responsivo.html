@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lampada [Responsivo]</title>
+    <link rel="stylesheet" href="animacoes.css">
+</head>
+<body>
+    <header>
+        <nav>links</nav>
+    </header>
+
+    <main>
+        <section>
+            <h1> Lâmpada</h1>
+            <p>Testando... </p>
+        </section>
+        <picture>
+            <source srcset="banner.mobile.avif" media="(max-width: 767px)" type="image/avif">
+            <source srcset="banner-desktop.avif" type="image/avif">
+            <img src="image-desktop.jgp"
+             width="1200" height="400" 
+             alt="Descrição disponível" 
+             loading="lazy" decoding="async">
+        </picture>
+    </main>
+    
+    <script src="animacoes.js"></script>
+</body>
+</html>

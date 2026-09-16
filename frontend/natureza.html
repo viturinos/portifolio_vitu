@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natureza</title>
+    <link rel="stylesheet" href="disciplinas.css">
+    <link rel="stylesheet" href="animacoes.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home1.html">Início</a></li>
+            <li><a href="linguagens.html">Linguagens</a></li>
+            <li><a href="humanas.html">Humanas</a></li>
+            <li><a href="natureza.html">Natureza</a></li>
+            <li><a href="matematica.html">Matemática</a></li>
+            <li><a href="senai.html">SENAI</a></li>
+            <li><a href="anexos.html">Anexos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="disciplina-header">
+            <h1>CIÊNCIAS DA NATUREZA</h1>
+            <div class="descricao">
+                Nas Ciências da Natureza, a linguagem é o conjunto de códigos, símbolos e
+                modelos formais — como a Matemática, a notação química e a sequência genética —
+                utilizados para descrever, medir e prever os fenômenos do universo de maneira
+                universal e objetiva. Diferente das línguas humanas, essa linguagem buscar eliminar
+                ambiguidades, utilizando fórmulas físicas, reações químicas e diagramas para traduzir
+                leis naturais em dados precisos que podem ser compreendidos por qualquer cientista,
+                independentemente de sua cultura, funcionando como a ferramenta fundamental para a
+                construção do conhecimento científico e a validação de experimentos.
+            </div>
+        </div>
+
+        <form id="form-anexo" class="anexo-form">
+            <h2>Adicionar Nova Atividade</h2>
+            <p class="anexo-desc">Preencha os campos abaixo para anexar uma nova atividade. Ela aparecerá automaticamente no eixo escolhido.</p>
+            <div class="anexo-grupo">
+                <div class="campo">
+                    <label for="anexo-nome">Nome da Atividade</label>
+                    <input type="text" id="anexo-nome" placeholder="Ex: Mapa mental sobre química orgânica" required>
+                </div>
+                <div class="campo">
+                    <label for="anexo-eixo">Eixo</label>
+<select id="anexo-eixo" required>
+                        <option value="">Selecione o eixo</option>
+                        <option value="EIXO 1">Eixo 1</option>
+                        <option value="EIXO 2">Eixo 2</option>
+                        <option value="EIXO 3">Eixo 3</option>
+                        <option value="EIXO 4">Eixo 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="campo campo-arquivo">
+                <label for="anexo-arquivo">Imagem da Atividade</label>
+                <input type="file" id="anexo-arquivo" accept="image/*" required>
+            </div>
+            <div class="anexo-acoes">
+                <button type="submit" class="btn-anexo">Salvar Atividade</button>
+                <button type="button" id="anexo-limpar" class="btn-limpar">Limpar</button>
+            </div>
+            <div id="anexo-msg" class="anexo-msg"></div>
+        </form>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">1</span>
+                <h2>EIXO 1</h2>
+            </div>
+            <div class="atividades-grid">
+                <figure class="atividade-card">
+                    <img src="./img/WhatsApp Image 2026-02-11 at 19.38.54.jpg" alt="Classificação das Cadeias Carbônicas">
+                    <figcaption>Classificação das Cadeias Carbônicas</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/image (1).png" alt="Meiose e Mitose">
+                    <figcaption>Meiose e Mitose</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/leis de ohm.png" alt="Leis de Ohm">
+                    <figcaption>Leis de Ohm</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/eletroestatica.png" alt="Eletroestática">
+                    <figcaption>Eletroestática</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/Projeto tikercard.png" alt="Projeto Tinkercad">
+                    <figcaption>Projeto Tinkercad</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/doenças agentes quimicos.png" alt="Doenças por Agentes Químicos">
+                    <figcaption>Doenças por Agentes Químicos</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">2</span>
+                <h2>EIXO 2</h2>
+            </div>
+            <div class="atividades-grid">
+                <figure class="atividade-card">
+                    <img src="./img/FUNCOES ORGANICAS.png" alt="Funções Orgânicas">
+                    <figcaption>Funções Orgânicas</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/TEORIA EVOLUCIONISTAS.png" alt="Principais teorias evolucionistas">
+                    <figcaption>Principais Teorias Evolucionistas</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/FUNCOES nitrognadas.png" alt="Funções Nitrogenadas">
+                    <figcaption>Funções Nitrogenadas</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/evolução.png" alt="Teorias da evolução">
+                    <figcaption>Teorias da Evolução</figcaption>
+</figure>
+            </div>
+        </section>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">3</span>
+                <h2>EIXO 3</h2>
+            </div>
+            <div class="atividades-grid">
+            </div>
+        </section>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">4</span>
+                <h2>EIXO 4</h2>
+            </div>
+            <div class="atividades-grid">
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-conteudo">
+<button id="modal-fechar" class="modal-fechar">&times;</button>
+            <button id="modal-rotacionar" class="modal-rotacionar" title="Girar imagem em -90°">&#8630;</button>
+            <button id="modal-anterior" class="modal-nav modal-anterior">&#10094;</button>
+            <button id="modal-proximo" class="modal-nav modal-proximo">&#10095;</button>
+            <img id="modal-img" src="" alt="">
+            <div id="modal-legenda" class="modal-legenda"></div>
+        </div>
+    </div>
+
+    <div id="toast-eixo" class="toast-eixo">
+        <span class="toast-icone">&#128279;</span>
+        <span id="toast-eixo-texto"></span>
+    </div>
+
+    <footer>
+        <div class="insta">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/free-logotipo-do-instagram-icon-svg-download-png-7574396.webp" alt="Instagram">
+            </a>
+            <p>INSTAGRAM</p>
+        </div>
+    </footer>
+    <footer class="direitos">
+        <p>© <span id="ano"></span> Victor Emanuel. Todos os direitos reservados.</p>
+    </footer>
+    <script>document.getElementById("ano").textContent = new Date().getFullYear();</script>
+    <script src="storage.js"></script>
+    <script src="disciplinas.js?v=4"></script>
+<script src="animacoes.js"></script>\r\n</body>
+</html>

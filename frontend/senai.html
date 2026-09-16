@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SENAI</title>
+    <link rel="stylesheet" href="disciplinas.css">
+    <link rel="stylesheet" href="animacoes.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home1.html">Início</a></li>
+            <li><a href="linguagens.html">Linguagens</a></li>
+            <li><a href="humanas.html">Humanas</a></li>
+            <li><a href="natureza.html">Natureza</a></li>
+            <li><a href="matematica.html">Matemática</a></li>
+            <li><a href="senai.html">SENAI</a></li>
+            <li><a href="anexos.html">Anexos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="disciplina-header">
+            <h1>SENAI</h1>
+            <div class="descricao">
+                No SENAI, a linguagem é tratada como uma ferramenta técnica e profissional
+                indispensável para a integração entre o homem, a máquina e o processo produtivo.
+                Ela se manifesta através do domínio de normas técnicas (como a ABNT), da interpretação
+                de desenhos industriais, de diagramas e de linguagens de programação de máquinas, servindo
+                como o código comum que garante a precisão, a segurança e a padronização no desenvolvimento
+                de produtos. No ambiente de formação profissional, falar essa "linguagem" significa ser capaz
+                de traduzir projetos em execuções práticas, garantindo que a comunicação no chão de fábrica
+                seja eficiente e livre de erros que possam comprometer a qualidade industrial.
+            </div>
+        </div>
+
+        <form id="form-anexo" class="anexo-form">
+            <h2>Adicionar Nova Atividade</h2>
+            <p class="anexo-desc">Preencha os campos abaixo para anexar uma nova atividade. Ela aparecerá automaticamente no eixo escolhido.</p>
+            <div class="anexo-grupo">
+                <div class="campo">
+                    <label for="anexo-nome">Nome da Atividade</label>
+                    <input type="text" id="anexo-nome" placeholder="Ex: Projeto de app em JavaScript" required>
+                </div>
+                <div class="campo">
+                    <label for="anexo-eixo">Eixo</label>
+<select id="anexo-eixo" required>
+                        <option value="">Selecione o eixo</option>
+                        <option value="EIXO 1">Eixo 1</option>
+                        <option value="EIXO 2">Eixo 2</option>
+                        <option value="EIXO 3">Eixo 3</option>
+                        <option value="EIXO 4">Eixo 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="campo campo-arquivo">
+                <label for="anexo-arquivo">Imagem da Atividade</label>
+                <input type="file" id="anexo-arquivo" accept="image/*" required>
+            </div>
+            <div class="anexo-acoes">
+                <button type="submit" class="btn-anexo">Salvar Atividade</button>
+                <button type="button" id="anexo-limpar" class="btn-limpar">Limpar</button>
+            </div>
+            <div id="anexo-msg" class="anexo-msg"></div>
+        </form>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">1</span>
+                <h2>EIXO 1</h2>
+            </div>
+            <div class="atividades-grid">
+                <figure class="atividade-card">
+                    <img src="./img/palavracruzada.png" alt="Palavra Cruzada">
+                    <figcaption>Palavra Cruzada</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/apostasegura.png" alt="Projeto de Baixa Fidelidade">
+                    <figcaption>Projeto de Baixa Fidelidade</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/eficiencia.png" alt="Eficiência, Eficácia e Melhoria Contínua">
+                    <figcaption>Eficiência, Eficácia e Melhoria Contínua</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/ética.png" alt="Ética no Trabalho">
+                    <figcaption>Ética no Trabalho</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/organizacao.png" alt="Organização do Trabalho">
+                    <figcaption>Organização do Trabalho</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/teoria .png" alt="Teoria das Cores">
+                    <figcaption>Teoria das Cores</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/Boneco 3d .png" alt="Boneco 3D">
+                    <figcaption>Boneco 3D</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/Exelencia profissional.png" alt="Excelência Profissional">
+                    <figcaption>Excelência Profissional</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/mapa mental Exelencia profissional.png" alt="Mapa Mental Excelência Profissional">
+                    <figcaption>Mapa Mental Excelência Profissional</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/Portfolio de imagens.png" alt="Portfólio de Imagens">
+                    <figcaption>Portfólio de Imagens</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">2</span>
+                <h2>EIXO 2</h2>
+            </div>
+            <div class="atividades-grid">
+                <figure class="atividade-card">
+                    <img src="./img/Campanha Audiovisual.png" alt="Campanha Audiovisual">
+                    <figcaption>Campanha Audiovisual</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/Relogio java.png" alt="Relógio de Java">
+                    <figcaption>Relógio de Java</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/Calculadora de IMC .png" alt="Calculadora de IMC">
+                    <figcaption>Calculadora de IMC</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/rotinascall-backs.jpg" alt="Rotinas Call-backs">
+                    <figcaption>Rotinas Call-backs</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/Portfolio de imagens .png" alt="Portfólio de Imagens">
+                    <figcaption>Portfólio de Imagens</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/1º DESAFIO 2HORAS.png" alt="1º Desafio 2Horas">
+                    <figcaption>1º Desafio 2Horas</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/controle emocional mapa .png" alt="Mapa Mental Controle Emocional">
+                    <figcaption>Mapa Mental Controle Emocional</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/controle emocional slide.png" alt="Slide Controle Emocional">
+                    <figcaption>Slide Controle Emocional</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/cartão de visista.png" alt="Cartão de Visita">
+                    <figcaption>Cartão de Visita</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/LAMPADA.png" alt="Lâmpada">
+                    <figcaption>Lâmpada</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/calculadora de idade.png" alt="Calculadora de Idade">
+                    <figcaption>Calculadora de Idade</figcaption>
+                </figure>
+            </div>
+        </section>
+
+<section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">3</span>
+                <h2>EIXO 3</h2>
+            </div>
+            <div class="atividades-grid">
+                <figure class="atividade-card">
+                    <img src="./img/LOGIN.png" alt="Login com dois botões">
+                    <figcaption>Login com dois botões</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">4</span>
+                <h2>EIXO 4</h2>
+            </div>
+            <div class="atividades-grid">
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-conteudo">
+<button id="modal-fechar" class="modal-fechar">&times;</button>
+            <button id="modal-rotacionar" class="modal-rotacionar" title="Girar imagem em -90°">&#8630;</button>
+            <button id="modal-anterior" class="modal-nav modal-anterior">&#10094;</button>
+            <button id="modal-proximo" class="modal-nav modal-proximo">&#10095;</button>
+            <img id="modal-img" src="" alt="">
+            <div id="modal-legenda" class="modal-legenda"></div>
+        </div>
+    </div>
+
+    <div id="toast-eixo" class="toast-eixo">
+        <span class="toast-icone">&#128279;</span>
+        <span id="toast-eixo-texto"></span>
+    </div>
+
+    <footer>
+        <div class="insta">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/free-logotipo-do-instagram-icon-svg-download-png-7574396.webp" alt="Instagram">
+            </a>
+            <p>INSTAGRAM</p>
+        </div>
+    </footer>
+    <footer class="direitos">
+        <p>© <span id="ano"></span> Victor Emanuel. Todos os direitos reservados.</p>
+    </footer>
+    <script>document.getElementById("ano").textContent = new Date().getFullYear();</script>
+    <script src="storage.js"></script>
+    <script src="disciplinas.js?v=4"></script>
+<script src="animacoes.js"></script>\r\n</body>
+</html>

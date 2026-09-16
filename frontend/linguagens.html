@@ -1,0 +1,171 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linguagens</title>
+    <link rel="stylesheet" href="disciplinas.css">
+    <link rel="stylesheet" href="animacoes.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="home1.html">Início</a></li>
+            <li><a href="linguagens.html">Linguagens</a></li>
+            <li><a href="humanas.html">Humanas</a></li>
+            <li><a href="natureza.html">Natureza</a></li>
+            <li><a href="matematica.html">Matemática</a></li>
+            <li><a href="senai.html">SENAI</a></li>
+            <li><a href="anexos.html">Anexos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="disciplina-header">
+            <h1>LINGUAGENS</h1>
+            <div class="descricao">
+                A linguagem é, em essência, qualquer sistema de sinais — sejam palavras,
+                gestos, sons ou códigos — utilizado para organizar o pensamento e possibilitar
+                a troca de informações entre indivíduos ou máquinas. Ela funciona como uma ponte
+                estruturada por regras (gramática ou sintaxe) que transforma ideias abstratas em
+                mensagens compreensíveis, abrangendo desde a fala cotidiana e a escrita até sistemas
+                complexos como a programação e a matemática, sendo a ferramenta fundamental para a
+                construção da cultura e do conhecimento compartilhado.
+            </div>
+        </div>
+
+        <form id="form-anexo" class="anexo-form">
+            <h2>Adicionar Nova Atividade</h2>
+            <p class="anexo-desc">Preencha os campos abaixo para anexar uma nova atividade. Ela aparecerá automaticamente no eixo escolhido.</p>
+            <div class="anexo-grupo">
+                <div class="campo">
+                    <label for="anexo-nome">Nome da Atividade</label>
+                    <input type="text" id="anexo-nome" placeholder="Ex: Mapa mental sobre Romantismo" required>
+                </div>
+                <div class="campo">
+                    <label for="anexo-eixo">Eixo</label>
+<select id="anexo-eixo" required>
+                        <option value="">Selecione o eixo</option>
+                        <option value="EIXO 1">Eixo 1</option>
+                        <option value="EIXO 2">Eixo 2</option>
+                        <option value="EIXO 3">Eixo 3</option>
+                        <option value="EIXO 4">Eixo 4</option>
+                    </select>
+                </div>
+            </div>
+            <div class="campo campo-arquivo">
+                <label for="anexo-arquivo">Imagem da Atividade</label>
+                <input type="file" id="anexo-arquivo" accept="image/*" required>
+            </div>
+            <div class="anexo-acoes">
+                <button type="submit" class="btn-anexo">Salvar Atividade</button>
+                <button type="button" id="anexo-limpar" class="btn-limpar">Limpar</button>
+            </div>
+            <div id="anexo-msg" class="anexo-msg"></div>
+        </form>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">1</span>
+                <h2>EIXO 1</h2>
+            </div>
+            <div class="atividades-grid">
+                <figure class="atividade-card">
+                    <img src="./img/carta.png" alt="Atividade das borboleta">
+                    <figcaption>Atividade das borboleta</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/Captura de tela 2026-03-12 165145.png" alt="Realidade Virtual X Realidade de Estudo">
+                    <figcaption>Realidade Virtual X Realidade de Estudo</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/pronomes indefiniti.png" alt="Pronomes Indefinidos">
+                    <figcaption>Pronomes Indefinidos</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/vida por meio das telas.png" alt="A vida por meio das telas">
+                    <figcaption>A vida por meio das telas</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">2</span>
+                <h2>EIXO 2</h2>
+            </div>
+            <div class="atividades-grid">
+                <figure class="atividade-card">
+                    <img src="./img/BLACK POWER.png" alt="Movimento Black Power">
+                    <figcaption>Movimento Black Power</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/JOSE LINS.png" alt="Slide José Lins">
+                    <figcaption>Slide José Lins</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/MULHERES NA LITERATURA.png" alt="Mulheres na Literatura">
+                    <figcaption>Mulheres na Literatura</figcaption>
+                </figure>
+                <figure class="atividade-card">
+                    <img src="./img/LISTA DE QUESTÃO.png" alt="Lista de Questão">
+                    <figcaption>Lista de Questão</figcaption>
+                </figure>
+<figure class="atividade-card">
+                    <img src="./img/Gefaça uma imagem de mapa mental, sobre tipos e generos textuais, utilizando esse modelo e templateneros textuais .png" alt="Tipos e Generos textuais">
+                    <figcaption>Tipos e Gêneros Textuais</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">3</span>
+                <h2>EIXO 3</h2>
+            </div>
+            <div class="atividades-grid">
+            </div>
+        </section>
+
+        <section class="eixo-section">
+            <div class="eixo-titulo">
+                <span class="eixo-numero">4</span>
+                <h2>EIXO 4</h2>
+            </div>
+            <div class="atividades-grid">
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal-overlay">
+        <div class="modal-conteudo">
+<button id="modal-fechar" class="modal-fechar">&times;</button>
+            <button id="modal-rotacionar" class="modal-rotacionar" title="Girar imagem em -90°">&#8630;</button>
+            <button id="modal-anterior" class="modal-nav modal-anterior">&#10094;</button>
+            <button id="modal-proximo" class="modal-nav modal-proximo">&#10095;</button>
+            <img id="modal-img" src="" alt="">
+            <div id="modal-legenda" class="modal-legenda"></div>
+        </div>
+    </div>
+
+    <div id="toast-eixo" class="toast-eixo">
+        <span class="toast-icone">&#128279;</span>
+        <span id="toast-eixo-texto"></span>
+    </div>
+
+    <footer>
+        <div class="insta">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/free-logotipo-do-instagram-icon-svg-download-png-7574396.webp" alt="Instagram">
+            </a>
+            <p>INSTAGRAM</p>
+        </div>
+    </footer>
+    <footer class="direitos">
+        <p>© <span id="ano"></span> Victor Emanuel. Todos os direitos reservados.</p>
+    </footer>
+    <script>document.getElementById("ano").textContent = new Date().getFullYear();</script>
+    <script src="storage.js"></script>
+    <script src="disciplinas.js?v=4"></script>
+<script src="animacoes.js"></script>\r\n</body>
+</html>

@@ -1,0 +1,500 @@
+/* =============================================
+   PLANO DE ESTUDO — VICTOR EMANUEL
+   Estilo integrado ao visual do restante do site
+   (glassmorphism, paleta roxa, Poppins)
+   ============================================= */
+
+:root {
+    --bg-inicio: #140021;
+    --bg-fim: #05010d;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-borda: rgba(255, 255, 255, 0.08);
+    --roxo: #c084fc;
+    --roxo-suave: #a855f7;
+    --roxo-deep: #6f42c2;
+    --violeta: #7c3aed;
+    --texto: #faefef;
+    --apagado: #b7b7cf;
+    --raio-grande: 26px;
+    --raio-medio: 16px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--bg-inicio), var(--bg-fim));
+    font-family: 'Poppins', sans-serif;
+    color: var(--texto);
+    padding: 34px 6% 40px;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* ================= MENU ================= */
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 60px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 50px;
+    background: var(--glass);
+    border: 1px solid var(--glass-borda);
+    color: var(--texto);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    border-color: rgba(183, 108, 255, 0.5);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+    transform: translateY(-2px);
+}
+
+nav a.atual {
+    background: linear-gradient(135deg, rgba(168, 85, 247, 0.35), rgba(124, 58, 237, 0.25));
+    border-color: rgba(192, 132, 252, 0.6);
+    color: #fff;
+    box-shadow: 0 0 18px rgba(168, 85, 247, 0.25);
+}
+
+/* ================= CABEÇALHO ================= */
+.header-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header-title h1 {
+    font-size: 64px;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(to right, #ffffff, var(--roxo));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.2;
+}
+
+.header-title::after {
+    content: '';
+    width: 130px;
+    height: 4px;
+    background: #b76cff;
+    margin: 22px auto 0;
+    border-radius: 50px;
+    display: block;
+    box-shadow: 0 0 20px #b76cff;
+}
+
+.header-title p {
+    color: var(--apagado);
+    max-width: 640px;
+    margin: 24px auto 0;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* ================= CONTAINER DE VIDRO ================= */
+.tabela-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 34px;
+    background: var(--glass);
+    border: 1px solid var(--glass-borda);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: var(--raio-grande);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), inset 0 0 60px rgba(168, 85, 247, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+.tabela-container::before {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    top: -170px;
+    right: -170px;
+    background: radial-gradient(circle, rgba(168, 85, 247, 0.22), transparent 70%);
+    pointer-events: none;
+}
+
+/* ================= GRID ================= */
+.tabela {
+    display: grid;
+    grid-template-columns: 200px repeat(7, 1fr);
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.turno {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--apagado);
+    background: rgba(168, 85, 247, 0.06);
+    border: 1px solid rgba(192, 132, 252, 0.2);
+    border-radius: var(--raio-medio);
+}
+
+.dia {
+    text-align: center;
+    padding: 16px 8px;
+    border-radius: var(--raio-medio);
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 15px;
+    color: var(--roxo);
+    background: linear-gradient(145deg, rgba(168, 85, 247, 0.16), rgba(124, 58, 237, 0.08));
+    border: 1px solid rgba(192, 132, 252, 0.25);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.horario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 16px 18px;
+    border-radius: var(--raio-medio);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-borda);
+    color: var(--roxo);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.horario span {
+    color: var(--apagado);
+    font-weight: 400;
+    font-size: 13px;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+    opacity: 0.9;
+}
+
+/* ================= CÉLULAS (BASE) ================= */
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 18px 8px;
+    border-radius: var(--raio-medio);
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.4px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+    cursor: default;
+}
+
+.box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ================= CATEGORIAS ================= */
+/* Academia */
+.box.academia {
+    background: linear-gradient(145deg, rgba(236, 72, 153, 0.22), rgba(217, 70, 239, 0.12));
+    border-color: rgba(244, 114, 182, 0.35);
+    color: #fbcfe8;
+}
+
+.box.academia:hover {
+    border-color: rgba(244, 114, 182, 0.6);
+    box-shadow: 0 8px 25px rgba(236, 72, 153, 0.25);
+}
+
+/* Matérias do currículo */
+.box.materia {
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.28), rgba(124, 58, 237, 0.15));
+    border-color: rgba(167, 139, 250, 0.4);
+    color: #e9d5ff;
+}
+
+.box.materia:hover {
+    border-color: rgba(167, 139, 250, 0.65);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+/* SENAI (formação técnica) */
+.box.senai {
+    background: linear-gradient(145deg, rgba(99, 102, 241, 0.32), rgba(79, 70, 229, 0.18));
+    border-color: rgba(129, 140, 248, 0.45);
+    color: #c7d2fe;
+}
+
+.box.senai:hover {
+    border-color: rgba(129, 140, 248, 0.7);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+}
+
+/* SESI */
+.box.sesi {
+    background: linear-gradient(145deg, rgba(59, 130, 246, 0.22), rgba(99, 102, 241, 0.12));
+    border-color: rgba(96, 165, 250, 0.35);
+    color: #dbeafe;
+}
+
+.box.sesi:hover {
+    border-color: rgba(96, 165, 250, 0.6);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
+}
+
+/* Contra-turno / Atividades */
+.box.contraturno {
+    background: linear-gradient(145deg, rgba(192, 132, 252, 0.14), rgba(168, 85, 247, 0.08));
+    border-color: rgba(192, 132, 252, 0.28);
+    color: #f3e8ff;
+}
+
+.box.contraturno:hover {
+    border-color: rgba(192, 132, 252, 0.5);
+    box-shadow: 0 8px 25px rgba(168, 85, 247, 0.2);
+}
+
+/* Vagas livres */
+.box.vazio {
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 16px;
+}
+
+.box.vazio:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+/* ================= LEGENDA ================= */
+.legenda {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 34px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    z-index: 1;
+}
+
+.legenda-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-borda);
+    font-size: 13px;
+    color: var(--apagado);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.dot-academia {
+    background: linear-gradient(145deg, #ec4899, #d946ef);
+}
+
+.dot-materia {
+    background: linear-gradient(145deg, #8b5cf6, #7c3aed);
+}
+
+.dot-senai {
+    background: linear-gradient(145deg, #6366f1, #4f46e5);
+}
+
+.dot-sesi {
+    background: linear-gradient(145deg, #3b82f6, #6366f1);
+}
+
+.dot-contraturno {
+    background: linear-gradient(145deg, #c084fc, #a855f7);
+    opacity: 0.75;
+}
+
+.dot-vazio {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+/* ================= RODAPÉ ================= */
+.direitos {
+    text-align: center;
+    padding: 44px 0 10px;
+    color: var(--apagado);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.direitos p {
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* ================= RESPONSIVO ================= */
+@media (max-width: 1100px) {
+    body {
+        padding: 28px 4% 36px;
+    }
+
+    .tabela {
+        grid-template-columns: 150px repeat(7, 1fr);
+        gap: 10px;
+    }
+
+    .header-title h1 {
+        font-size: 48px;
+    }
+
+    .box {
+        font-size: 14px;
+        padding: 15px 6px;
+    }
+
+    .horario {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        gap: 8px;
+        margin-bottom: 40px;
+    }
+
+    nav a {
+        padding: 9px 18px;
+        font-size: 14px;
+    }
+
+    .header-title h1 {
+        font-size: 40px;
+    }
+
+    .header-title p {
+        font-size: 15px;
+    }
+
+    .header-title {
+        margin-bottom: 34px;
+    }
+
+    .tabela-container {
+        padding: 20px 14px;
+        border-radius: 20px;
+    }
+
+    .tabela {
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .turno,
+    .horario {
+        grid-column: 1 / -1;
+    }
+
+    .horario {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 14px;
+    }
+
+    .horario span {
+        margin-top: 0;
+        text-align: right;
+    }
+
+    .dia {
+        font-size: 12px;
+        letter-spacing: 1px;
+        padding: 10px 2px;
+        border-radius: 12px;
+    }
+
+    .box {
+        font-size: 12px;
+        padding: 12px 4px;
+        border-radius: 12px;
+        letter-spacing: 0.2px;
+    }
+
+    .legenda {
+        gap: 10px;
+        margin-top: 24px;
+        padding-top: 20px;
+    }
+
+    .legenda-chip {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 420px) {
+    body {
+        padding: 22px 3% 30px;
+    }
+
+    .header-title h1 {
+        font-size: 34px;
+    }
+
+    .tabela {
+        gap: 6px;
+    }
+
+    .dia {
+        font-size: 10px;
+        letter-spacing: 0.5px;
+    }
+
+    .box {
+        font-size: 10px;
+        padding: 10px 2px;
+    }
+
+    .horario {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    .horario span {
+        font-size: 11px;
+    }
+}

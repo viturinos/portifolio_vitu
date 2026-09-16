@@ -1,0 +1,293 @@
+﻿
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cursos | Victor Emanuel</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:linear-gradient(135deg,#140021,#05010d);
+    color:white;
+    min-height:100vh;
+}
+
+.container{
+    width:100%;
+    padding:70px 8%;
+}
+
+h1{
+    font-size:70px;
+    font-weight:700;
+
+    background:linear-gradient(to right,#ffffff,#c084fc);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    margin-bottom:15px;
+}
+
+.titulo p{
+    color:#bdbdbd;
+    max-width:500px;
+    line-height:1.7;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    transition:0.3s;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+
+    border-color:rgba(183,108,255,0.4);
+
+    box-shadow:0 0 25px rgba(168,85,247,0.15);
+}
+
+.icon{
+    width:70px;
+    height:70px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:18px;
+
+    background:rgba(183,108,255,0.12);
+
+    margin-bottom:20px;
+}
+
+.icon i{
+    font-size:28px;
+    color:#c084fc;
+}
+
+.categoria{
+    color:#c084fc;
+    font-size:13px;
+    letter-spacing:1px;
+    text-transform:uppercase;
+}
+
+.card h2{
+    font-size:28px;
+    margin:15px 0;
+    line-height:1.4;
+}
+
+.card p{
+    color:#bdbdbd;
+    line-height:1.6;
+}
+
+.status{
+    margin-top:20px;
+
+    display:inline-block;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    background:rgba(0,255,136,0.1);
+
+    color:#00ff88;
+}
+
+.andamento{
+    background:rgba(183,108,255,0.12);
+    color:#c084fc;
+}
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+
+    color:#9f9f9f;
+
+    margin-top:70px;
+}
+
+@media(max-width:700px){
+
+    .titulo h1{
+        font-size:48px;
+    }
+
+}
+
+@media(max-width:560px){
+
+    .container{
+        padding:45px 5%;
+    }
+
+    .titulo h1{
+        font-size:36px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        gap:20px;
+    }
+
+    .card{
+        padding:24px;
+    }
+
+    .card h2{
+        font-size:24px;
+    }
+
+    footer{
+        margin-top:50px;
+    }
+
+}
+
+</style>
+    <link rel="stylesheet" href="animacoes.css">
+</head>
+<body>
+
+<section class="container">
+
+<div class="titulo">
+    <h1>Cursos</h1>
+
+    <p>
+        Formações e experiências que fortalecem minha evolução acadêmica e profissional.
+    </p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+    <div class="icon">
+        <i class="fa-solid fa-code"></i>
+    </div>
+
+    <span class="categoria">Ensino Médio</span>
+
+    <h2>SESI Wilma Catão</h2>
+
+    <p>
+        Ensino médio em andamento com foco em desenvolvimento acadêmico.
+    </p>
+
+    <span class="status andamento">Em andamento</span>
+
+</div>
+
+<div class="card">
+
+    <div class="icon">
+        <i class="fa-solid fa-laptop"></i>
+    </div>
+
+    <span class="categoria">Técnico</span>
+
+    <h2>Técnico em Informática para Internet</h2>
+
+    <p>
+        Formação técnica pelo SENAI voltada para desenvolvimento web e tecnologia.
+    </p>
+
+    <span class="status andamento">Em andamento</span>
+
+</div>
+
+<div class="card">
+
+    <div class="icon">
+        <i class="fa-solid fa-microchip"></i>
+    </div>
+
+    <span class="categoria">Informática</span>
+
+    <h2>Operador de Computador</h2>
+
+    <p>
+        Curso voltado para ferramentas digitais e informática básica.
+    </p>
+
+    <span class="status">Concluído</span>
+
+</div>
+
+<div class="card">
+
+    <div class="icon">
+        <i class="fa-solid fa-briefcase"></i>
+    </div>
+
+    <span class="categoria">Administrativo</span>
+
+    <h2>Auxiliar Administrativo</h2>
+
+    <p>
+        Capacitação profissional em organização e rotinas administrativas.
+    </p>
+
+    <span class="status">Concluído</span>
+
+</div>
+
+</div>
+
+<footer>
+    © <span id="ano"></span> Victor Emanuel. Todos os direitos reservados.
+</footer>
+
+<script>
+    document.getElementById("ano").textContent = new Date().getFullYear();
+</script>
+
+</section>
+
+    <script src="animacoes.js"></script>
+</body>
+</html>
+```
