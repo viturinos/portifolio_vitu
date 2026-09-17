@@ -78,7 +78,9 @@ function renderizarCarrossel() {
         btnDel.addEventListener('click', () => deletarMomento(momento.id));
 
         acoes.appendChild(contador);
-        acoes.appendChild(btnDel);
+        if (AUTORIZACAO.podeEditar()) {
+            acoes.appendChild(btnDel);
+        }
 
         slide.appendChild(img);
         slide.appendChild(legenda);
@@ -109,6 +111,11 @@ function anterior() { irPara(indiceAtual - 1); }
 
 async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!AUTORIZACAO.podeEditar()) {
+        mostrarMsg('erro', 'Professores não podem adicionar momentos.');
+        return;
+    }
 
     if (!CLOUDE.estaConfigurado()) {
         mostrarMsg('erro', CLOUDE.erroConfiguracao());
@@ -163,6 +170,7 @@ async function handleSubmit(e) {
 }
 
 function deletarMomento(id) {
+    if (!AUTORIZACAO.podeEditar()) return;
     if (!CLOUDE.estaConfigurado()) return;
 
     const momento = momentos.find((m) => m.id === id);
@@ -200,6 +208,10 @@ if (formMomento) formMomento.addEventListener('submit', handleSubmit);
 if (btnLimpar) btnLimpar.addEventListener('click', limparFormulario);
 if (btnAnterior) btnAnterior.addEventListener('click', anterior);
 if (btnProximo) btnProximo.addEventListener('click', proximo);
+
+if (formMomento && !AUTORIZACAO.podeEditar()) {
+    formMomento.style.display = 'none';
+}
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowLeft') anterior();

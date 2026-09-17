@@ -1,11 +1,12 @@
 /***
  * SCREPIT.JS — versão estática
  * Login validado no próprio navegador (sem servidor).
+ * Salva a sessão (usuário e papel) para controlar permissões.
  */
 
 const USUARIOS = [
-    { nome: 'Victor', senha: '12512641' },
-    { nome: 'Professores', senha: '12345@' }
+    { nome: 'Victor', senha: '12512641', papel: 'admin' },
+    { nome: 'Professores', senha: '12345@', papel: 'professor' }
 ];
 
 async function logar() {
@@ -21,6 +22,8 @@ async function logar() {
         return;
     }
 
+    AUTORIZACAO.salvar(usuario.nome, usuario.papel);
+
     msgErro.style.display = "none";
 
     const curtain = document.getElementById("curtain");
@@ -35,4 +38,10 @@ function cancelar() {
     document.getElementById("login").value = "";
     document.getElementById("senha").value = "";
     document.getElementById("mensagem").style.display = "none";
+}
+
+/* Permite deslogar e voltar ao login */
+function sair() {
+    AUTORIZACAO.encerrar();
+    window.location.href = "index.html";
 }

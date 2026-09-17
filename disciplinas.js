@@ -227,8 +227,10 @@ function carregarAtividades() {
                 figura.appendChild(img);
                 figura.appendChild(legenda);
 
-                const botaoRemover = criarBotaoRemover(atividade.id);
-                figura.appendChild(botaoRemover);
+                if (AUTORIZACAO.podeEditar()) {
+                    const botaoRemover = criarBotaoRemover(atividade.id);
+                    figura.appendChild(botaoRemover);
+                }
 
                 secaoAlvo.querySelector('.atividades-grid').appendChild(figura);
             });
@@ -243,6 +245,11 @@ function carregarAtividades() {
 
 async function handleAnexo(e) {
     if (e) e.preventDefault();
+
+    if (!AUTORIZACAO.podeEditar()) {
+        mostrarMsg('erro', 'Professores não podem adicionar atividades.');
+        return;
+    }
 
     if (!CLOUDE.estaConfigurado()) {
         mostrarMsg('erro', CLOUDE.erroConfiguracao());
@@ -312,6 +319,7 @@ async function handleAnexo(e) {
 }
 
 function removerAtividade(id, figura) {
+    if (!AUTORIZACAO.podeEditar()) return;
     if (!CLOUDE.estaConfigurado()) return;
 
     const atividade = atividadesSalvas.find((a) => a.id === id);
@@ -349,6 +357,10 @@ function limparMsg() {
 if (formAnexo) {
     formAnexo.addEventListener('submit', handleAnexo);
     preencherOpcoesEixo();
+
+    if (!AUTORIZACAO.podeEditar()) {
+        formAnexo.style.display = 'none';
+    }
 }
 
 if (btnLimpar) {
