@@ -1,6 +1,7 @@
-/***
- * DISCIPLINAS.JS — versão estática
- * Funciona sem servidor: atividades ficam salvas no localStorage do navegador.
+/**
+ * DISCIPLINAS.JS — versão nuvem (Supabase)
+ * As atividades ficam salvas em um banco de dados na nuvem,
+ * disponíveis em qualquer dispositivo e no GitHub Pages.
  */
 
 let listaCards = Array.from(document.querySelectorAll('.atividade-card'));
@@ -19,15 +20,6 @@ let eixosPorCard = [];
 let rotacaoAtual = 0;
 
 const nomeDisciplina = (document.querySelector('.disciplina-header h1') || {}).textContent || '';
-const chaveArmazenamento = 'portfolio_atividades_' + nomeDisciplina.toLowerCase().replace(/[^a-z0-9]/g, '');
-
-function gerarId() {
-    return Date.now().toString(36) + '-' + Math.random().toString(36).substring(2, 8);
-}
-
-function salvarAtividades() {
-    return StorageHelper.salvar(chaveArmazenamento, atividadesSalvas);
-}
 
 function mapearEixos() {
     eixosPorCard = [];
@@ -207,36 +199,55 @@ function criarBotaoRemover(id) {
 }
 
 function carregarAtividades() {
-    atividadesSalvas = StorageHelper.obter(chaveArmazenamento, []);
+    if (!CLOUDE.estaConfigurado()) {
+        mostrarMsg('erro', CLOUDE.erroConfiguracao());
+        return;
+    }
 
-    atividadesSalvas.forEach(atividade => {
-        const secaoAlvo = encontrarSecaoEixo(obterNumeroEixo(atividade.eixo));
-        if (!secaoAlvo) return;
+    mostrarMsg('sucesso', 'Carregando atividades da nuvem...');
 
-        const figura = document.createElement('figure');
-        figura.className = 'atividade-card';
+    CLOUDE.listarAtividades()
+        .then((todas) => {
+            atividadesSalvas = todas.filter((a) => a.disciplina === nomeDisciplina);
 
-        const img = document.createElement('img');
-        img.src = atividade.imagem;
-        img.alt = atividade.nome;
+            atividadesSalvas.forEach((atividade) => {
+                const secaoAlvo = encontrarSecaoEixo(obterNumeroEixo(atividade.eixo));
+                if (!secaoAlvo) return;
 
-        const legenda = document.createElement('figcaption');
-        legenda.textContent = atividade.nome;
+                const figura = document.createElement('figure');
+                figura.className = 'atividade-card';
 
-        figura.appendChild(img);
-        figura.appendChild(legenda);
+                const img = document.createElement('img');
+                img.src = atividade.imagem;
+                img.alt = atividade.nome;
 
-        const botaoRemover = criarBotaoRemover(atividade.id);
-        figura.appendChild(botaoRemover);
+                const legenda = document.createElement('figcaption');
+                legenda.textContent = atividade.nome;
 
-        secaoAlvo.querySelector('.atividades-grid').appendChild(figura);
-    });
+                figura.appendChild(img);
+                figura.appendChild(legenda);
 
-    reindexarCards();
+                const botaoRemover = criarBotaoRemover(atividade.id);
+                figura.appendChild(botaoRemover);
+
+                secaoAlvo.querySelector('.atividades-grid').appendChild(figura);
+            });
+
+            reindexarCards();
+            limparMsg();
+        })
+        .catch((err) => {
+            mostrarMsg('erro', 'Erro ao carregar as atividades: ' + (err.message || err));
+        });
 }
 
 async function handleAnexo(e) {
     if (e) e.preventDefault();
+
+    if (!CLOUDE.estaConfigurado()) {
+        mostrarMsg('erro', CLOUDE.erroConfiguracao());
+        return;
+    }
 
     const nome = campoNome.value.trim();
     const eixo = campoEixo.value;
@@ -269,44 +280,56 @@ async function handleAnexo(e) {
         return;
     }
 
-    const atividade = {
-        id: gerarId(),
-        nome: nome,
-        eixo: eixo,
-        disciplina: nomeDisciplina,
-        imagem: imagemSrc,
-        data: new Date().toISOString()
-    };
+    mostrarMsg('sucesso', 'Enviando para a nuvem, aguarde...');
 
-    atividadesSalvas.push(atividade);
-    if (!salvarAtividades()) {
-        atividadesSalvas.pop();
-        mostrarMsg('erro', 'Espaço de armazenamento do navegador esgotado. Remova atividades antigas ou use imagens menores.');
-        return;
+    try {
+        const blob = StorageHelper.dataURLParaBlob(imagemSrc);
+        const urlImagem = await CLOUDE.enviarImagem(blob, 'atividades');
+
+        const atividadeSalva = await CLOUDE.salvarAtividade({
+            nome: nome,
+            eixo: eixo,
+            disciplina: nomeDisciplina,
+            imagem: urlImagem
+        });
+
+        atividadesSalvas.push(atividadeSalva);
+
+        const adicionado = adicionarCard(atividadeSalva.nome, atividadeSalva.imagem, atividadeSalva.eixo, atividadeSalva.id);
+        if (!adicionado) {
+            mostrarMsg('erro', 'Eixo não encontrado nesta página.');
+            return;
+        }
+
+        campoNome.value = '';
+        campoEixo.value = '';
+        campoArquivo.value = '';
+        limparMsg();
+        mostrarMsg('sucesso', 'Atividade salva na nuvem. Já aparece em qualquer dispositivo!');
+    } catch (err) {
+        mostrarMsg('erro', 'Erro ao salvar na nuvem: ' + (err.message || err));
     }
-
-    const adicionado = adicionarCard(atividade.nome, atividade.imagem, atividade.eixo, atividade.id);
-    if (!adicionado) {
-        atividadesSalvas.pop();
-        salvarAtividades();
-        mostrarMsg('erro', 'Eixo não encontrado nesta página.');
-        return;
-    }
-
-    campoNome.value = '';
-    campoEixo.value = '';
-    campoArquivo.value = '';
-    limparMsg();
-    mostrarMsg('sucesso', 'Atividade salva neste navegador com sucesso!');
 }
 
 function removerAtividade(id, figura) {
-    atividadesSalvas = atividadesSalvas.filter(a => a.id !== id);
-    salvarAtividades();
-    figura.remove();
-    reindexarCards();
-    limparMsg();
-    mostrarMsg('sucesso', 'Atividade removida.');
+    if (!CLOUDE.estaConfigurado()) return;
+
+    const atividade = atividadesSalvas.find((a) => a.id === id);
+    const caminho = atividade ? CLOUDE.caminhoDoArquivo(atividade.imagem) : null;
+
+    mostrarMsg('sucesso', 'Removendo atividade...');
+
+    CLOUDE.removerAtividade(id, caminho)
+        .then(() => {
+            atividadesSalvas = atividadesSalvas.filter((a) => a.id !== id);
+            if (figura) figura.remove();
+            reindexarCards();
+            limparMsg();
+            mostrarMsg('sucesso', 'Atividade removida da nuvem.');
+        })
+        .catch((err) => {
+            mostrarMsg('erro', 'Erro ao remover: ' + (err.message || err));
+        });
 }
 
 function limparFormulario() {

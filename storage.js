@@ -24,7 +24,20 @@ const StorageHelper = {
         }
     },
 
-    /* Converte e COMPRIME uma imagem para caber no localStorage */
+    /* Converte uma Data URL (imagem comprimida) em um arquivo Blob para envio à nuvem */
+    dataURLParaBlob(dataURL) {
+        const partes = dataURL.split(',');
+        const meta = partes[0].match(/data:(.*?);base64/);
+        const mime = meta ? meta[1] : 'image/jpeg';
+        const binario = atob(partes[1]);
+        const array = new Uint8Array(binario.length);
+        for (let i = 0; i < binario.length; i++) {
+            array[i] = binario.charCodeAt(i);
+        }
+        return new Blob([array], { type: mime });
+    },
+
+    /* Converte e COMPRIME uma imagem para caber no navegador antes do envio à nuvem */
     comprimirImagem(arquivo, maxLado, qualidade) {
         return new Promise((resolve, reject) => {
             if (!arquivo || !arquivo.type.startsWith('image/')) {

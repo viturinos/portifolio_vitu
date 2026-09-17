@@ -1,9 +1,8 @@
-/***
- * MOMENTOS.JS — versão estática
- * Funciona sem servidor: momentos ficam salvos no localStorage do navegador.
+/**
+ * MOMENTOS.JS — versão nuvem (Supabase)
+ * Os momentos ficam salvos em um banco de dados na nuvem,
+ * disponíveis em qualquer dispositivo e no GitHub Pages.
  */
-
-const chaveArmazenamento = 'portfolio_momentos';
 
 const formMomento = document.getElementById('form-momento');
 const campoTitulo = document.getElementById('momento-titulo');
@@ -19,23 +18,29 @@ const btnProximo = document.getElementById('carrossel-proximo');
 let momentos = [];
 let indiceAtual = 0;
 
-function gerarId() {
-    return Date.now().toString(36) + '-' + Math.random().toString(36).substring(2, 8);
-}
-
-function salvarMomentos() {
-    return StorageHelper.salvar(chaveArmazenamento, momentos);
-}
-
 function mostrarMsg(tipo, texto) {
     msgMomento.className = 'momento-msg ' + tipo;
     msgMomento.textContent = texto;
 }
 
 function carregarMomentos() {
-    momentos = StorageHelper.obter(chaveArmazenamento, []);
-    indiceAtual = 0;
-    renderizarCarrossel();
+    if (!CLOUDE.estaConfigurado()) {
+        mostrarMsg('erro', CLOUDE.erroConfiguracao());
+        return;
+    }
+
+    mostrarMsg('sucesso', 'Carregando momentos da nuvem...');
+
+    CLOUDE.listarMomentos()
+        .then((todos) => {
+            momentos = todos;
+            indiceAtual = 0;
+            renderizarCarrossel();
+            limparMsg();
+        })
+        .catch((err) => {
+            mostrarMsg('erro', 'Erro ao carregar os momentos: ' + (err.message || err));
+        });
 }
 
 function renderizarCarrossel() {
@@ -105,6 +110,11 @@ function anterior() { irPara(indiceAtual - 1); }
 async function handleSubmit(e) {
     e.preventDefault();
 
+    if (!CLOUDE.estaConfigurado()) {
+        mostrarMsg('erro', CLOUDE.erroConfiguracao());
+        return;
+    }
+
     const titulo = campoTitulo.value.trim();
     const arquivo = campoArquivo.files[0];
 
@@ -128,31 +138,48 @@ async function handleSubmit(e) {
         return;
     }
 
-    const momento = {
-        id: gerarId(),
-        titulo: titulo,
-        imagem: imagem,
-        data: new Date().toISOString()
-    };
+    mostrarMsg('sucesso', 'Enviando para a nuvem, aguarde...');
 
-    momentos.push(momento);
-    if (!salvarMomentos()) {
-        momentos.pop();
-        mostrarMsg('erro', 'Espaço de armazenamento do navegador esgotado. Remova momentos antigos ou use imagens menores.');
-        return;
+    try {
+        const blob = StorageHelper.dataURLParaBlob(imagem);
+        const urlImagem = await CLOUDE.enviarImagem(blob, 'momentos');
+
+        const momentoSalvo = await CLOUDE.salvarMomento({
+            titulo: titulo,
+            imagem: urlImagem
+        });
+
+        momentos.push(momentoSalvo);
+
+        campoTitulo.value = '';
+        campoArquivo.value = '';
+        renderizarCarrossel();
+        irPara(momentos.length - 1);
+        limparMsg();
+        mostrarMsg('sucesso', 'Momento salvo na nuvem. Já aparece em qualquer dispositivo!');
+    } catch (err) {
+        mostrarMsg('erro', 'Erro ao salvar na nuvem: ' + (err.message || err));
     }
-
-    campoTitulo.value = '';
-    campoArquivo.value = '';
-    renderizarCarrossel();
-    irPara(momentos.length - 1);
-    mostrarMsg('sucesso', 'Momento salvo com sucesso!');
 }
 
 function deletarMomento(id) {
-    momentos = momentos.filter(m => m.id !== id);
-    salvarMomentos();
-    renderizarCarrossel();
+    if (!CLOUDE.estaConfigurado()) return;
+
+    const momento = momentos.find((m) => m.id === id);
+    const caminho = momento ? CLOUDE.caminhoDoArquivo(momento.imagem) : null;
+
+    mostrarMsg('sucesso', 'Removendo momento...');
+
+    CLOUDE.removerMomento(id, caminho)
+        .then(() => {
+            momentos = momentos.filter((m) => m.id !== id);
+            renderizarCarrossel();
+            limparMsg();
+            mostrarMsg('sucesso', 'Momento removido da nuvem.');
+        })
+        .catch((err) => {
+            mostrarMsg('erro', 'Erro ao remover: ' + (err.message || err));
+        });
 }
 
 function limparFormulario() {
@@ -160,6 +187,13 @@ function limparFormulario() {
     campoArquivo.value = '';
     msgMomento.className = 'momento-msg';
     msgMomento.textContent = '';
+}
+
+function limparMsg() {
+    if (msgMomento) {
+        msgMomento.className = 'momento-msg';
+        msgMomento.textContent = '';
+    }
 }
 
 if (formMomento) formMomento.addEventListener('submit', handleSubmit);
