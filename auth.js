@@ -36,5 +36,38 @@ const AUTORIZACAO = (function () {
         return !ehProfessor();
     }
 
-    return { obter, salvar, encerrar, papelAtual, ehProfessor, podeEditar };
+    /* Aviso fixo no canto da tela com quem está logado + botão sair */
+    function exibirStatus() {
+        const sessao = obter();
+        if (!sessao) return;
+
+        const caixa = document.createElement('div');
+        caixa.style.cssText = 'position:fixed;bottom:12px;right:12px;z-index:9999;background:#16213e;color:#fff;padding:8px 14px;border-radius:20px;font-size:13px;font-family:Arial,Helvetica,sans-serif;box-shadow:0 2px 10px rgba(0,0,0,.35);display:flex;align-items:center;gap:10px;';
+
+        const texto = document.createElement('span');
+        texto.textContent = sessao.papel === 'professor'
+            ? 'Modo Professor (somente leitura)'
+            : 'Logado como ' + sessao.usuario;
+
+        const btn = document.createElement('button');
+        btn.textContent = 'Sair';
+        btn.style.cssText = 'border:none;background:#e63946;color:#fff;border-radius:12px;padding:4px 12px;cursor:pointer;font-size:12px;';
+
+        btn.onclick = function () {
+            encerrar();
+            window.location.href = 'index.html';
+        };
+
+        caixa.appendChild(texto);
+        caixa.appendChild(btn);
+        document.body.appendChild(caixa);
+    }
+
+    if (document.body) {
+        exibirStatus();
+    } else {
+        document.addEventListener('DOMContentLoaded', exibirStatus);
+    }
+
+    return { obter, salvar, encerrar, papelAtual, ehProfessor, podeEditar, exibirStatus };
 })();
