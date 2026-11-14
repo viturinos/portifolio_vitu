@@ -152,6 +152,23 @@ function encontrarSecaoEixo(numero) {
     return null;
 }
 
+/* Compara caminhos de imagem para evitar card duplicado quando a atividade
+   já aparece no HTML da página e também está salva na nuvem. */
+function normalizarImagem(src) {
+    try {
+        return decodeURIComponent((src || '').trim()).replace(/^\.\//, '').toLowerCase();
+    } catch (e) {
+        return (src || '').trim().replace(/^\.\//, '').toLowerCase();
+    }
+}
+
+function cardJaExiste(secaoAlvo, imagemSrc) {
+    const alvo = normalizarImagem(imagemSrc);
+    if (!alvo) return false;
+    return Array.from(secaoAlvo.querySelectorAll('.atividade-card img'))
+        .some((img) => normalizarImagem(img.getAttribute('src')) === alvo);
+}
+
 function mostrarMsg(tipo, texto) {
     msgAnexo.className = 'anexo-msg ' + tipo;
     msgAnexo.textContent = texto;
@@ -213,6 +230,7 @@ function carregarAtividades() {
             atividadesSalvas.forEach((atividade) => {
                 const secaoAlvo = encontrarSecaoEixo(obterNumeroEixo(atividade.eixo));
                 if (!secaoAlvo) return;
+                if (cardJaExiste(secaoAlvo, atividade.imagem)) return;
 
                 const figura = document.createElement('figure');
                 figura.className = 'atividade-card';

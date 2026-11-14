@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividades Escolhidas | Victor Emanuel</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="atividades.css">
+    <link rel="stylesheet" href="animacoes.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home1.html">Início</a></li>
+            <li><a href="linguagens.html">Linguagens</a></li>
+            <li><a href="humanas.html">Humanas</a></li>
+            <li><a href="natureza.html">Natureza</a></li>
+            <li><a href="matematica.html">Matemática</a></li>
+            <li><a href="senai.html">SENAI</a></li>
+            <li><a href="atividades.html" class="atual" aria-current="page">Atividades</a></li>
+            <li><a href="anexos.html">Anexos</a></li>
+            <li><a href="curriculo.html">Currículo</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="atividades-header">
+            <span class="selo"><i class="fa-solid fa-star"></i> Curadoria do portfólio</span>
+            <h1>Atividades Escolhidas</h1>
+            <p class="descricao">
+                Uma seleção das atividades que melhor representam a minha trajetória neste ano.
+                Cada matéria reúne quatro trabalhos, um para cada eixo, escolhidos com cuidado
+                para mostrar a evolução e os aprendizados construídos ao longo do percurso.
+            </p>
+        </div>
+
+        <div id="aviso-nuvem" class="aviso-nuvem"></div>
+
+        <div id="lista-materias"></div>
+    </main>
+
+    <!-- ================= ESCOLHER / ENVIAR ATIVIDADE ================= -->
+    <div id="picker" class="modal-overlay" aria-hidden="true">
+        <div class="picker-conteudo" role="dialog" aria-modal="true" aria-labelledby="picker-titulo">
+            <button type="button" id="picker-fechar" class="modal-fechar" aria-label="Fechar">&times;</button>
+
+            <div class="picker-cabecalho">
+                <span id="picker-materia" class="picker-materia"></span>
+                <h2 id="picker-titulo">Adicionar atividade</h2>
+                <p>Escolha uma atividade já cadastrada nesta matéria e eixo ou envie uma nova imagem do seu dispositivo.</p>
+            </div>
+
+            <div class="picker-secao">
+                <h3><i class="fa-solid fa-images"></i> Atividades já cadastradas</h3>
+                <div id="picker-galeria" class="picker-galeria"></div>
+                <p id="picker-vazio" class="picker-vazio">
+                    Ainda não há atividades cadastradas neste eixo. Envie uma imagem abaixo para começar.
+                </p>
+            </div>
+
+            <div class="picker-divisor"><span>ou envie uma nova imagem</span></div>
+
+            <form id="picker-form" class="picker-form">
+                <div class="picker-campos">
+                    <div class="campo">
+                        <label for="picker-nome">Nome da atividade</label>
+                        <input type="text" id="picker-nome" placeholder="Ex: Mapa mental sobre Romantismo" required>
+                    </div>
+                    <div class="campo">
+                        <label for="picker-arquivo">Imagem da atividade</label>
+                        <input type="file" id="picker-arquivo" accept="image/*" required>
+                    </div>
+                </div>
+                <div class="picker-acoes">
+                    <button type="submit" id="picker-salvar" class="btn-primario">
+                        <i class="fa-solid fa-cloud-arrow-up"></i> Salvar atividade
+                    </button>
+                </div>
+                <div id="picker-msg" class="picker-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= VISUALIZAÇÃO GRANDE ================= -->
+    <div id="lightbox" class="modal-overlay lightbox-overlay" aria-hidden="true">
+        <div class="lightbox-conteudo" role="dialog" aria-modal="true" aria-label="Visualização da atividade">
+            <button type="button" id="lightbox-fechar" class="modal-fechar" aria-label="Fechar">&times;</button>
+            <button type="button" id="lightbox-rotacionar" class="lightbox-rotacionar" aria-label="Girar imagem" title="Girar imagem em -90°">
+                <i class="fa-solid fa-rotate-left"></i>
+            </button>
+            <button type="button" id="lightbox-anterior" class="modal-nav lightbox-anterior" aria-label="Atividade anterior">&#10094;</button>
+            <button type="button" id="lightbox-proximo" class="modal-nav lightbox-proximo" aria-label="Próxima atividade">&#10095;</button>
+
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-info">
+                <div id="lightbox-legenda" class="lightbox-legenda"></div>
+                <div id="lightbox-meta" class="lightbox-meta"></div>
+                <div class="lightbox-dica">Use as setas para navegar, R para girar e Esc para fechar.</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast-geral">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toast-texto"></span>
+    </div>
+
+    <footer>
+        <div class="insta">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/free-logotipo-do-instagram-icon-svg-download-png-7574396.webp" alt="Instagram">
+            </a>
+            <p>INSTAGRAM</p>
+        </div>
+    </footer>
+    <footer class="direitos">
+        <p>© <span id="ano"></span> Victor Emanuel. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>document.getElementById("ano").textContent = new Date().getFullYear();</script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js?v=2"></script>
+    <script src="supabase-client.js?v=1"></script>
+    <script src="storage.js?v=2"></script>
+    <script src="auth.js?v=2"></script>
+    <script src="atividades.js?v=1"></script>
+    <script src="animacoes.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo | Victor Emanuel</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-inicio: #140021;
+            --bg-fim: #05010d;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-borda: rgba(255, 255, 255, 0.08);
+            --roxo: #c084fc;
+            --roxo-suave: #a855f7;
+            --texto: #ffffff;
+            --apagado: #c7c7c7;
+            --raio: 28px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: var(--texto);
+            background: linear-gradient(135deg, var(--bg-inicio), var(--bg-fim));
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ================= NAVBAR ================= */
+        nav {
+            padding: 30px 8%;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            list-style: none;
+        }
+
+        nav a {
+            color: #d7d7d7;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--roxo);
+        }
+
+        nav a::after {
+            content: '';
+            width: 0;
+            height: 2px;
+            background: #b76cff;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a.atual {
+            color: var(--roxo);
+        }
+
+        nav a.atual::after {
+            width: 100%;
+        }
+
+        /* ================= CONTEÚDO ================= */
+        main {
+            width: 88%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        .curriculo-header {
+            text-align: center;
+            padding: 20px 0 50px;
+        }
+
+        .curriculo-header h1 {
+            font-size: 58px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #ffffff, var(--roxo));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .curriculo-header .descricao {
+            max-width: 720px;
+            margin: 0 auto;
+            color: var(--apagado);
+            font-size: 16px;
+            line-height: 1.9;
+            background: var(--glass);
+            border: 1px solid var(--glass-borda);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: var(--raio);
+            padding: 28px 34px;
+            position: relative;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .curriculo-header .descricao::before {
+            content: '';
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, var(--roxo-suave) 0%, transparent 70%);
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            opacity: 0.18;
+        }
+
+        /* ================= CARDS ================= */
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--glass-borda);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: var(--raio);
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .card::before {
+            content: '';
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--roxo-suave) 0%, transparent 70%);
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            opacity: 0.18;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(183, 108, 255, 0.35);
+            box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+        }
+
+        /* ================= PERFIL ================= */
+        .perfil {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 34px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .perfil-principal {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .avatar {
+            width: 88px;
+            height: 88px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 26px;
+            background: rgba(183, 108, 255, 0.12);
+            border: 1px solid rgba(183, 108, 255, 0.3);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.18);
+        }
+
+        .avatar i {
+            font-size: 36px;
+            color: var(--roxo);
+        }
+
+        .perfil-principal h2 {
+            font-size: 27px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .cargo {
+            display: inline-block;
+            margin-top: 8px;
+            color: var(--roxo);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.4px;
+        }
+
+        .nascimento {
+            margin-top: 8px;
+            color: #a9a9bd;
+            font-size: 14px;
+        }
+
+        .perfil-contatos {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contato {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-borda);
+            border-radius: 14px;
+            color: #d7d7d7;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+            word-break: break-word;
+        }
+
+        .contato i {
+            color: var(--roxo);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .contato:hover {
+            border-color: rgba(183, 108, 255, 0.45);
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .acoes-curriculo {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-curriculo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex: 1;
+            padding: 14px 20px;
+            background: linear-gradient(135deg, #5946ac, #31107e);
+            border: 1px solid rgba(183, 108, 255, 0.5);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-curriculo:hover {
+            background: linear-gradient(135deg, #7a52d4, #5138e2);
+            box-shadow: 0 0 22px rgba(168, 85, 247, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn-curriculo.secundario {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            color: #d7d7d7;
+        }
+
+        .btn-curriculo.secundario:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(183, 108, 255, 0.45);
+        }
+
+        /* ================= BLOCOS ================= */
+        .bloco {
+            margin-bottom: 30px;
+        }
+
+        .bloco-topo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 26px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bloco-icone {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            background: rgba(183, 108, 255, 0.12);
+        }
+
+        .bloco-icone i {
+            font-size: 22px;
+            color: var(--roxo);
+        }
+
+        .bloco-topo h2 {
+            font-size: 26px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .bloco-topo::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, rgba(183, 108, 255, 0.4), transparent);
+        }
+
+        .bloco > p {
+            color: var(--apagado);
+            font-size: 15px;
+            line-height: 1.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ================= FORMAÇÃO ================= */
+        .formacao-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .formacao-item {
+            display: grid;
+            grid-template-columns: 74px 1fr auto;
+            gap: 20px;
+            align-items: center;
+            padding: 20px 22px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .formacao-item:hover {
+            border-color: rgba(183, 108, 255, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .ano {
+            color: var(--roxo);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .formacao-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .formacao-item p {
+            color: #a9a9bd;
+            font-size: 14px;
+            margin-top: 4px;
+        }
+
+        .status {
+            padding: 7px 15px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+            background: rgba(0, 255, 136, 0.1);
+            color: #00ff88;
+        }
+
+        .status.andamento {
+            background: rgba(183, 108, 255, 0.12);
+            color: var(--roxo);
+        }
+
+        /* ================= EXPERIÊNCIAS ================= */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            z-index: 1;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, #b76cff, rgba(183, 108, 255, 0.05));
+        }
+
+        .exp {
+            position: relative;
+            padding-bottom: 28px;
+        }
+
+        .exp:last-child {
+            padding-bottom: 0;
+        }
+
+        .exp::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #b76cff;
+            border: 3px solid var(--bg-inicio);
+            box-shadow: 0 0 14px rgba(183, 108, 255, 0.8);
+        }
+
+        .exp-topo {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px 14px;
+            margin-bottom: 8px;
+        }
+
+        .exp-ano {
+            padding: 5px 12px;
+            border-radius: 50px;
+            background: rgba(183, 108, 255, 0.12);
+            color: var(--roxo);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .exp h3 {
+            font-size: 19px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .exp-cargo {
+            color: var(--roxo);
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .exp p {
+            color: var(--apagado);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        /* ================= QUALIFICAÇÕES ================= */
+        .qualificacoes {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .qualificacoes li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 18px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            color: var(--apagado);
+            font-size: 15px;
+            line-height: 1.7;
+            transition: 0.3s;
+        }
+
+        .qualificacoes li:hover {
+            border-color: rgba(183, 108, 255, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .qualificacoes i {
+            color: var(--roxo);
+            font-size: 16px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-top: 50px;
+        }
+
+        .insta {
+            text-align: center;
+        }
+
+        .insta img {
+            width: 55px;
+            transition: 0.3s;
+        }
+
+        .insta img:hover {
+            transform: scale(1.1);
+        }
+
+        .insta p {
+            margin-top: 10px;
+            color: #bdbdbd;
+            letter-spacing: 2px;
+        }
+
+        .direitos {
+            width: 100%;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: #9f9f9f;
+            font-size: 14px;
+        }
+
+        /* ================= RESPONSIVO ================= */
+        @media (max-width: 900px) {
+            .perfil {
+                grid-template-columns: 1fr;
+                gap: 26px;
+            }
+
+            .perfil-principal h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 700px) {
+            .curriculo-header h1 {
+                font-size: 40px;
+            }
+
+            .curriculo-header .descricao {
+                padding: 24px;
+                font-size: 15px;
+            }
+
+            .formacao-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .status {
+                justify-self: start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            main {
+                width: 94%;
+            }
+
+            nav {
+                padding: 22px 4%;
+            }
+
+            nav ul {
+                gap: 14px;
+            }
+
+            nav a {
+                font-size: 14px;
+            }
+
+            .curriculo-header {
+                padding: 10px 0 36px;
+            }
+
+            .curriculo-header h1 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .perfil-principal {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+
+            .avatar {
+                width: 74px;
+                height: 74px;
+                border-radius: 22px;
+            }
+
+            .avatar i {
+                font-size: 30px;
+            }
+
+            .perfil-principal h2 {
+                font-size: 21px;
+            }
+
+            .bloco-topo h2 {
+                font-size: 21px;
+                white-space: normal;
+            }
+
+            .bloco-icone {
+                width: 46px;
+                height: 46px;
+                border-radius: 14px;
+            }
+
+            .exp h3 {
+                font-size: 17px;
+            }
+
+            .acoes-curriculo {
+                flex-direction: column;
+            }
+
+            .btn-curriculo {
+                width: 100%;
+            }
+        }
+    </style>
+
+    <link rel="stylesheet" href="animacoes.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="home1.html">Início</a></li>
+            <li><a href="projetos.html">Projetos</a></li>
+            <li><a href="curso.html">Cursos</a></li>
+            <li><a href="sobre.html">Contato</a></li>
+            <li><a href="planoestudo.html">Plano de Estudo</a></li>
+            <li><a href="atividades.html">Atividades</a></li>
+            <li><a href="curriculo.html" class="atual" aria-current="page">Currículo</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="curriculo-header">
+            <h1>CURRÍCULO</h1>
+            <div class="descricao">
+                Um resumo da minha trajetória acadêmica e profissional, com formações,
+                experiências e qualificações que venho construindo ao longo do tempo.
+            </div>
+        </div>
+
+        <section class="card perfil">
+            <div class="perfil-principal">
+                <div class="avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                    <h2>Victor Emanuel Oliveira de Sousa</h2>
+                    <span class="cargo">Desenvolvedor Web • Técnico em Informática para Internet</span>
+                    <p class="nascimento">Nascido em 18/09/2008 — 18 anos</p>
+                </div>
+            </div>
+
+            <div class="perfil-contatos">
+                <a class="contato" href="tel:+5589981425420">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    (89) 98142-5420
+                </a>
+                <a class="contato" href="mailto:oliveiradesousa261@gmail.com">
+                    <i class="fa-solid fa-envelope"></i>
+                    oliveiradesousa261@gmail.com
+                </a>
+                <div class="acoes-curriculo">
+                    <a class="btn-curriculo" href="docs/curriculo-victor-emanuel.pdf" target="_blank"
+                        rel="noopener noreferrer">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        Ver PDF
+                    </a>
+                    <a class="btn-curriculo secundario" href="docs/curriculo-victor-emanuel.pdf" download>
+                        <i class="fa-solid fa-download"></i>
+                        Baixar
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="card bloco">
+            <div class="bloco-topo">
+                <div class="bloco-icone">
+                    <i class="fa-solid fa-bullseye"></i>
+                </div>
+                <h2>Objetivos Profissionais</h2>
+            </div>
+            <p>
+                Busco oportunidade, visando desenvolver
+                habilidades profissionais e contribuir com dedicação e vontade de aprender
+                para o crescimento da empresa.
+            </p>
+        </section>
+
+        <section class="card bloco">
+            <div class="bloco-topo">
+                <div class="bloco-icone">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <h2>Formação | Cursos</h2>
+            </div>
+
+            <div class="formacao-lista">
+                <div class="formacao-item">
+                    <span class="ano">2026</span>
+                    <div>
+                        <h3>Ensino Médio</h3>
+                        <p>Escola SESI - Wilma Catão Araújo</p>
+                    </div>
+                    <span class="status andamento">Em andamento</span>
+                </div>
+
+                <div class="formacao-item">
+                    <span class="ano">2026</span>
+                    <div>
+                        <h3>Técnico em Informática para Internet</h3>
+                        <p>SENAI - Picos/PI</p>
+                    </div>
+                    <span class="status andamento">Em andamento</span>
+                </div>
+
+                <div class="formacao-item">
+                    <span class="ano">2025</span>
+                    <div>
+                        <h3>Assistente Administrativo</h3>
+                        <p>SEST-SENAT Picos/PI</p>
+                    </div>
+                    <span class="status">Concluído</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="card bloco">
+            <div class="bloco-topo">
+                <div class="bloco-icone">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h2>Experiências</h2>
+            </div>
+
+            <div class="timeline">
+                <article class="exp">
+                    <div class="exp-topo">
+                        <span class="exp-ano">2026</span>
+                        <h3>Campeão — Grand Prix SENAI de Inovação</h3>
+                    </div>
+                    <p>
+                        Campeão do Grand Prix SENAI de Inovação, atuando no desenvolvimento de um
+                        sistema de integração para o setor de Marketing da VIRTEX TELECOM. Experiência
+                        em inovação, tecnologia, trabalho e resolução de problemas e apresentação de soluções.
+                    </p>
+                </article>
+
+                <article class="exp">
+                    <div class="exp-topo">
+                        <span class="exp-ano">2025</span>
+                        <h3>Clínica Amor Saúde</h3>
+                    </div>
+                    <p class="exp-cargo">Jovem Aprendiz – Assistente Administrativo</p>
+                    <p>
+                        Fui responsável pelo atendimento presencial e telefônico, organização de
+                        informações, suporte às rotinas administrativas e acompanhamento pós-atendimento,
+                        desempenhando todas as funções com excelência, organização, responsabilidade e cordialidade.
+                    </p>
+                </article>
+
+                <article class="exp">
+                    <div class="exp-topo">
+                        <span class="exp-ano">2024</span>
+                        <h3>SPA Cleide Sousa</h3>
+                    </div>
+                    <p class="exp-cargo">Designer</p>
+                    <p>
+                        Atuação na criação e desenvolvimento da identidade visual do SPA, produção
+                        de posts, stories e materiais gráficos para redes sociais, divulgação de serviços,
+                        edição e tratamento de imagens.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section class="card bloco">
+            <div class="bloco-topo">
+                <div class="bloco-icone">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <h2>Qualificações</h2>
+            </div>
+
+            <ul class="qualificacoes">
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Facilidade em trabalhar em equipe e boa comunicação, colaborando de forma
+                    eficaz em ambientes de trabalho.
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Habilidade em organização e pontualidade.
+                </li>
+                <li>
+                    <i class="fa-solid fa-circle-check"></i>
+                    Vontade de aprender e desenvolver novas competências, com disposição para
+                    adquirir novos conhecimentos.
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="insta">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./img/free-logotipo-do-instagram-icon-svg-download-png-7574396.webp" alt="Instagram">
+            </a>
+            <p>INSTAGRAM</p>
+        </div>
+    </footer>
+    <footer class="direitos">
+        <p>© <span id="ano"></span> Victor Emanuel. Todos os direitos reservados. <br> Orientadores: Cleiton Jericó /
+            Regiane Leal</p>
+    </footer>
+
+    <script>document.getElementById("ano").textContent = new Date().getFullYear();</script>
+    <script src="animacoes.js"></script>
+</body>
+
+</html>
