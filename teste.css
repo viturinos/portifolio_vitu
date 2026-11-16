@@ -342,6 +342,37 @@ header{
     padding-left:20px;
 }
 
+/* LINK PARA A HISTÓRIA DE VIDA */
+
+.link-historia{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    margin-top:22px;
+
+    color:#c084fc;
+
+    font-size:14px;
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:0.3s;
+}
+
+.link-historia span{
+    transition:0.3s;
+}
+
+.link-historia:hover{
+    color:#e9d5ff;
+}
+
+.link-historia:hover span{
+    transform:translateX(5px);
+}
+
 /* ÁREAS */
 
 .areas{

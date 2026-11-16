@@ -41,7 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const alvos = document.querySelectorAll(
             '.disciplina-header, .momentos-header, .eixo-section, .atividade-card, ' +
             '.momento-form, .carrossel-section, .sobre, .forma, .hab, .cardVidro, ' +
-            '.areas, header, .hero-texto, .boneco-area, section, main > div'
+            '.areas, header, .hero-texto, .boneco-area, .capitulo, .conquista, .numero-card, ' +
+            'section, main > div'
         );
 
         alvos.forEach((el) => {
