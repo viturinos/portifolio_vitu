@@ -35,30 +35,7 @@ body {
     position: relative;
 }
 
-/* brilhos de fundo */
-body::before,
-body::after {
-    content: '';
-    position: fixed;
-    width: 520px;
-    height: 520px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    filter: blur(30px);
-}
-
-body::before {
-    top: -220px;
-    right: -160px;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.18), transparent 70%);
-}
-
-body::after {
-    bottom: -260px;
-    left: -180px;
-    background: radial-gradient(circle, rgba(244, 114, 182, 0.1), transparent 70%);
-}
+/* brilhos de fundo nas pontas removidos */
 
 /* ================= BARRA DE LEITURA ================= */
 

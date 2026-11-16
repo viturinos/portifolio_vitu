@@ -34,6 +34,55 @@ body{
     padding:80px 8%;
 }
 
+/* NAVBAR */
+
+nav {
+    padding: 0 0 30px;
+    position: relative;
+    z-index: 2;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+nav a {
+    color: #d7d7d7;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+    position: relative;
+}
+
+nav a:hover {
+    color: #c084fc;
+}
+
+nav a::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    background: #b76cff;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.3s;
+}
+
+nav a:hover::after,
+nav a.atual::after {
+    width: 100%;
+}
+
+nav a.atual {
+    color: #c084fc;
+}
+
 /* TÍTULO */
 
 .header-title{
@@ -216,6 +265,19 @@ body{
 </head>
 
 <body>
+
+<nav>
+    <ul>
+        <li><a href="home1.html">Início</a></li>
+        <li><a href="historia.html">História</a></li>
+        <li><a href="projetos.html" class="atual" aria-current="page">Projetos</a></li>
+        <li><a href="curso.html">Cursos</a></li>
+        <li><a href="sobre.html">Contato</a></li>
+        <li><a href="planoestudo.html">Plano de Estudo</a></li>
+        <li><a href="atividades.html">Atividades</a></li>
+        <li><a href="curriculo.html">Currículo</a></li>
+    </ul>
+</nav>
 
 <header class="header-title">
     <h1>MEU PROJETO DE VIDA</h1>
